@@ -1,0 +1,63 @@
+{
+  "name": "kube-secret-watcher",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "husky install",
+    "release": "npx semantic-release",
+    "updateVersion": "node new-version.js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/kube-secret-watcher.git"
+  },
+  "author": "David Weber",
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/exec": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.2.1",
+    "husky": "^6.0.0",
+    "semantic-release": "^17.4.2"
+  },
+  "release": {
+    "branches": [
+      "master",
+      "next"
+    ],
+    "repositoryUrl": "https://github.com/baloise/kube-secret-watcher.git",
+    "dryRun": false,
+    "ci": false,
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "npm run updateVersion ${nextRelease.version}"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "pom.xml"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]"
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {
+    "xml2js": "^0.4.23"
+  }
+}
