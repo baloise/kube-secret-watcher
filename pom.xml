@@ -7,7 +7,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ch.basler.kube</groupId>
   <artifactId>secretwatcher</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <ciManagement>
     <system>Github Actions</system>
     <url>https://github.com/baloise/kube-secret-watcher/actions</url>
