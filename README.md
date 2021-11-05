@@ -1,3 +1,6 @@
+# Archived
+Use https://github.com/baloise/os3-copier instead.
+
 # kube-secret-watcher
 A simple Quarkus based application able to watch secrets and copy them to other namespaces.  
 Additionally, there is some Kafka logic to handle coping the CA certificate too.
